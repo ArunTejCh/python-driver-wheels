@@ -85,3 +85,7 @@ install:
 - build_wheel $REPO_DIR $PLAT
 script:
 - install_run $PLAT
+after_success:
+    - ls
+    - pwd
+    - curl -$ARTIFACTORY_CREDS -T "{$(echo cassandra_driver* | tr ' ' ',')}" "https://datastax.jfrog.io/datastax/cpp-dse-driver/python-driver/builds/{$TRAVIS_BUILD_NUMBER}/"
