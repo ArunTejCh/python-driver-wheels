@@ -2,11 +2,14 @@
 # Define custom utilities
 # Test for OSX with [ -n "$IS_OSX" ]
 
-function pre_build {
+function before_install {
     # Any stuff that you need to do before you start building the wheels
     # Runs in the root directory of this repository.
     #:
     echo "pre-build steps"
+    if [ -n "$IS_OSX" ]; then
+        brew install libev
+    fi
 }
 
 function run_tests {
