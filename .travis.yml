@@ -88,4 +88,6 @@ script:
 after_success:
     - ls
     - pwd
+    - cd wheelhouse
+    - ls
     - curl -$ARTIFACTORY_CREDS -T "{$(echo cassandra_driver* | tr ' ' ',')}" "https://datastax.jfrog.io/datastax/cpp-dse-driver/python-driver/builds/{$TRAVIS_BUILD_NUMBER}/"
