@@ -8,6 +8,7 @@ function before_install {
     #:
     echo "pre-build steps"
     if [ -n "$IS_OSX" ]; then
+        brew update
         brew install libev
     fi
 }
