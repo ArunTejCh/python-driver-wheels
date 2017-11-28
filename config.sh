@@ -12,7 +12,11 @@ function pre_build {
         brew install libev
     else
         # Install a system package required by our library
-        echo "yoyo"
+        echo "linux builds"
+        echo $TRAVIS_OS_NAME
+        wget http://repository.it4i.cz/mirrors/repoforge/redhat/el5/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el5.rf.x86_64.rpm
+        rpm -i rpmforge*
+        yum install -y libev libev-devel
     fi
 }
 
