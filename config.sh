@@ -8,8 +8,8 @@ function pre_build {
     echo "pre-build steps"
     if [ -n "$IS_OSX" ]; then
         echo "osx stuff"
-        #brew update
-        #brew install libev
+        brew update
+        brew install libev
     else
         # Install a system package required by our library
         echo "yoyo"
