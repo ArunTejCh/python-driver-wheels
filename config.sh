@@ -8,13 +8,21 @@ function pre_build {
     echo "pre-build steps"
     if [ -n "$IS_OSX" ]; then
         echo "osx stuff"
-        brew update
-        brew install libev
     else
         # Install a system package required by our library
-        echo "linux builds"
-        echo $TRAVIS_OS_NAME
-        yum install -y libev libev-devel
+        yum list installed
+    fi
+    wget http://dist.schmorp.de/libev/Attic/libev-4.24.tar.gz
+    tar -xzf libev-4.24.tar.gz
+    cd libev-4.24/
+    ./configure
+    make
+    make install
+    if [ -n "$IS_OSX" ]; then
+        echo "osx stuff"
+    else
+        # Install a system package required by our library
+        yum list installed
     fi
 }
 
