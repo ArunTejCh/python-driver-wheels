@@ -24,6 +24,7 @@ function pre_build {
         # Install a system package required by our library
         yum list installed
     fi
+    cd ..
 }
 
 function run_tests {
